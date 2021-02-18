@@ -7,7 +7,7 @@ import compression from 'compression'
 import cors from 'cors'
 import fincaRoutes from './routers/FincaRoutes'
 import dotenv from 'dotenv'
-dotenv.config({ path: __dirname + '/.env' });
+dotenv.config({ path: __dirname + '/../.env' });
 class Server {
      public app: express.Application;
 
@@ -48,7 +48,6 @@ class Server {
           this.app.listen(this.app.get('port'),
                () => {
                     console.log('Server on port', this.app.get('port'))
-                    console.log( process.env.MONGODB_URI);
                     
                }
 
