@@ -6,7 +6,7 @@
   "scripts": {
     "ts": "tsc -w",
     "dev": "nodemon src/server.ts --exec ts-node",
-    "start": "\"node ./build/server.js\""
+    "start": "tsc-watch --onSuccess \"node ./build/server.js\""
   },
   "keywords": [],
   "author": "",
