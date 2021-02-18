@@ -6,6 +6,8 @@ import mongoose from 'mongoose';
 import compression from 'compression'
 import cors from 'cors'
 import fincaRoutes from './routers/FincaRoutes'
+import dotenv from 'dotenv'
+dotenv.config({ path: __dirname + '/.env' });
 class Server {
      public app: express.Application;
 
@@ -13,13 +15,14 @@ class Server {
           this.app = express();
           this.config();
           this.router();
+         
      }
 
      config() {
           const MONGO_URI = 'mongodb://localhost:27017/restapit'
           mongoose.set('useFindAndModify', true);
-          mongoose.connect(MONGO_URI || process.env.MONGODB_URI, {
-               useNewUrlParser: true,
+          mongoose.connect( process.env.MONGODB_URI || MONGO_URI , {
+               useNewUrlParser: true, 
                useCreateIndex: true,
                useUnifiedTopology: true
           }).then(db => console.log('Db Connected')
@@ -43,7 +46,11 @@ class Server {
 
      start() {
           this.app.listen(this.app.get('port'),
-               () => { console.log('Server on port', this.app.get('port')) }
+               () => {
+                    console.log('Server on port', this.app.get('port'))
+                    console.log( process.env.MONGODB_URI);
+                    
+               }
 
           )
 
