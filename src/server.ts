@@ -20,7 +20,6 @@ class Server {
 
      config() {
           const MONGO_URI = 'mongodb://localhost:27017/restapit'
-          mongoose.set('useFindAndModify', true);
           mongoose.connect( process.env.MONGODB_URI || MONGO_URI , {
                useNewUrlParser: true, 
                useCreateIndex: true,
